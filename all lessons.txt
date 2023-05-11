@@ -1,0 +1,434 @@
+
+Nikola Nakovski <nnakovskisemos@gmail.com>
+2:47 AM (8 minutes ago)
+to me, nnakovski, manevadragica, dragicamaneva
+
+class 1:
+//primer za skratena sintaksa na document ready
+// $(function () {
+//     console.log('Hello World');
+// })
+
+$(document).ready(function () {
+    // $('#btn').click(function () {
+    //     console.log('Hello World');
+    // });
+    $('#btn').dblclick(function () {
+        console.log('Hello DblClick');
+    })
+
+    $('p').click(function () {
+        // console.log('P click');
+        $(this).css('background-color', 'grey');
+    })
+
+    $('#btn2').click(function () {
+        $('p').hide();
+    })
+
+    // var btn2 = $('#btn2');
+    // console.log(btn2);
+
+    //  На клик на копче:
+    //  Да се скрие елементот id = "test“
+
+    $('#btn3').click(function () {
+        $("#test").hide();
+    })
+    //  Да се скријат сите елементи so class="test-class“
+
+    $('#btn4').click(function () {
+        $(".test-class").hide();
+    })
+    //  На клик на елементот да се скрие самиот елемент
+
+    $('#btnHide').click(function () {
+        $(this).hide();
+    })
+
+
+    $('#divelem').on({
+        mouseover: function () {
+            $(this).css('background-color', 'grey');
+        },
+        mouseout: function () {
+            $(this).css('background-color', 'green');
+        },
+        click: function () {
+            $(this).css('background-color', 'red');
+            //$(this).text() ja zema vrednosta na elementot vo innerText
+            //get
+            console.log($(this).text());
+            //$(this).text('New text') ja menuva(zadava) vrednosta na elementot vo innerText
+            //set
+            $(this).text('New text');
+        },
+    })
+
+    $('#btnClose').click(function () {
+        $('.openClose').hide();
+    })
+
+    $('#btnOpen').click(function () {
+        $('.openClose').show();
+    })
+
+
+
+});
+//end of class1
+
+
+//class 2:
+$(document).ready(function () {
+    // $('#btn1').click(function () {
+    //     $('#div11').fadeIn();
+    //     $('#div12').fadeIn('slow');
+    //     $('#div13').fadeIn(3000);
+    // })
+
+    // $('#btn2').click(function () {
+    //     $('#div21').fadeOut();
+    //     $('#div22').fadeOut('slow');
+    //     $('#div23').fadeOut(3000);
+    // })
+
+    $('#btn3').click(function () {
+        $('#div31').fadeToggle();
+        $('#div32').fadeToggle('slow');
+        $('#div33').fadeToggle(3000);
+    })
+
+    $('#btn4').click(function () {
+        $('#div41').fadeTo('slow', .15);
+        $('#div42').fadeTo('slow', .45);
+        $('#div43').fadeTo('slow', .7);
+    })
+
+    $('#slideClk').click(function () {
+        $('.slideElem').slideToggle('slow');
+    })
+    $('#btn5').click(function () {
+        $('#div5').animate({
+            left: '250px',
+            opacity: .5,
+            width: '150px',
+            height: '150px',
+        }, 3000);
+        // $('#div5').animate({ left: '0' });
+    })
+
+    $('#btn6').click(function () {
+        $('#div6').animate({
+            left: '+=150px',
+            width: '+=100px',
+            height: '+=100px',
+        }, 3000);
+    })
+
+    $('#btn7').click(function () {
+        $('#div7').animate({
+            height: 'toggle',
+        });
+    })
+
+    $('#btn8').click(function () {
+        $('#div8').animate({ height: '200px', opacity: .4 }, 'slow');
+        $('#div8').animate({ width: '200px', opacity: .8 }, 'slow');
+        $('#div8').animate({ height: '100px', opacity: .4 }, 'slow');
+        $('#div8').animate({ width: '100px', opacity: .3 }, 'slow');
+    })
+    $('#btn9').click(function () {
+        $('#div8').stop();
+    })
+
+    $('#btn10').click(function () {
+        // $('#div10').hide('slow', function () {
+        //     alert('Div is hidden!');
+        // });
+        $('#div10').hide('slow');
+        alert('Div is hidden!');
+
+    })
+});
+
+
+//end of class 2
+
+//class 3:
+$(document).ready(function () {
+    // $('#goToTop').click(function (e) {
+    //     e.preventDefault();
+    //     $('html, body').animate({ scrollTop: 0 }, 'slow');
+    // })
+
+    $('#p1').css('color', 'red')
+        .slideUp(2000)
+        .slideDown(2000);
+
+    console.log('Text:', $('#test').text());//innerText
+    console.log('Html:', $('#test').html());//innerHtml
+    console.log('Value:', $('#inputTest').val());//value
+    $('#test').text('New text');
+    $('#test2').html('<b>New Html text</b>');
+    $('#inputTest').val('Name Surname');
+
+    $('#test3').text(function (i, oldText) {
+        console.log('test3 index:', i);
+        console.log('test3 oldText:', oldText);
+        return 'Callback New text';
+    });
+
+    $('#test4').append('Adding append text.');
+    $('#test4').prepend('Adding prepend text. ');
+
+    var txt1 = '<p>Text HTML</p>';
+    var txt2 = $('<p></p>').text('Text jQuery');
+
+    $('body').append(txt1, txt2);
+    // $('body').prepend(txt1, txt2);
+
+    $('#inputTest').after('<p>Text after</p>');
+    $('#inputTest').before('<p>Text before</p>');
+
+    //na click na btn id="test2"
+    //da dobie background green and color white
+
+    $('#btn').click(function () {
+        $('#test2')
+            .css('background-color', 'green')
+            .css('color', 'white');
+    });
+});
+
+
+
+//end of class 3
+
+//class 4:
+$(document).ready(function () {
+    var img = '<img id="img_hide" src="https://tse3.mm.bing.net/th?id=OIP.iSu2RcCcdm78xbxNDJMJSgHaEo&pid=Api&P=0">';
+    var p = '<p>Lorem ipsum</p>';
+    $('#emptyDiv').append(img, p);
+
+    // $('#emptyDiv').after("<div id='secondDiv'>Div Lorem Ipsum</div>");
+    $("<div id='secondDiv'>Div Lorem Ipsum</div>").insertAfter('#emptyDiv');
+
+    $('<b> Append to</b>').appendTo('#secondDiv');
+    $('#secondDiv').empty();
+    $('#secondDiv').remove();
+
+    // $('p').remove('.test');
+    $('p').remove('.test, .test2');
+    $('p').addClass('blue');
+    $('.test1').addClass('big');
+    $('#emptyDiv').addClass('blue big');
+
+    $('#hideImg').click(function () {
+        $('#img_hide').toggleClass('hide');
+    });
+
+    $('.test1').css('background-color', 'red');
+    console.log($('.test1').css('background-color'));
+    // $('.test1').css('background-color', 'green');
+    // $('.test1').css('font-size', '25px');
+    $('.test1').css({
+        'font-size': '30px',
+        'background-color': 'blue',
+        'color': 'white'
+    });
+    var maxLength = 30;
+    $('#textArea').keyup(function () {
+        // console.log($(this).val());
+        var textLeft = maxLength - $(this).val().length;
+        // var textLeft = maxLength - this.value.length;
+        $('#rem_char').text(textLeft);
+    })
+});
+
+
+//end of class 4
+
+//class 5:
+$(document).ready(function () {
+    //vezba 1
+    //Vo html dodadete input od tip text i prazen div
+    //Sodrzinata sto ja vnesuvate vo inputot
+    //da se pojavuva vo div-ot
+
+    $(':text').keyup(function () {
+        $('div').text($(':text').val());
+    });
+
+    //vezba 2
+    //Vo html dodadete input od tip text i
+    // select so minimum 3 options
+    //Na promena na izborot na option izbranata vrednost
+    //da se prikazuva vo inputot
+    $('#selectColor').change(function () {
+        $('#selectText').val($(this).val());
+    });
+
+
+    //vezba 3
+    //Vo html dodadete img i div i button
+    //Na klik na button da se smeni redosledot
+    //na img i div
+
+    // $('button').click(function () {
+    //     $('#Image').before($('#divText'));
+    // });
+
+    // $('button').click(function () {
+    //     $('#divText').after($('#Image'));
+    // });
+
+    // $('button').click(function () {
+    //     $('#Image').insertAfter('#divText');
+    // });
+
+    $('button').click(function () {
+        $('#divText').insertBefore('#Image');
+    });
+});
+
+//end of class 5
+
+//class 6:
+$(document).ready(function () {
+    // //1
+    // $('div').width('300px').height(300);
+    // //2
+    // console.log($('div').height());
+    // //3
+    // console.log($('div').innerWidth());
+    // //4
+    // console.log($('div').outerHeight());
+    // //5
+    // console.log($('div').outerWidth(true));
+    // $('span').parentsUntil('div').css({
+    //     'color': 'red', 'border': '2px solid red'
+    // });
+
+    // $('p').children().css({
+    //     'color': 'red', 'border': '2px solid red'
+    // });
+
+    // $('div').children('.first').css({
+    //     'color': 'red', 'border': '2px solid red'
+    // });
+    // //gi vraka decata div
+    // $('div').find('div').css({
+    //     'color': 'red', 'border': '2px solid red'
+    // });
+    // //gi vraka site deca
+    // $('div').find('*').css({
+    //     'color': 'red', 'border': '2px solid red'
+    // });
+
+    // $('li').siblings().css({
+    //     'color': 'red', 'border': '2px solid red'
+    // });
+
+    // $('li').siblings('p').css({
+    //     'color': 'red', 'border': '2px solid red'
+    // });
+    //ke gi selektira vtoriot li i p,
+    //// zatoa sto ke se izvrsi 2 pati za dvata li elementi
+    // $('li').next().css({
+    //     'color': 'red', 'border': '2px solid red'
+    // });
+    // //na ovoj nacin se izvrsuva ednas samo za prviot li element
+    // $('li:first').next().css({
+    //     'color': 'red', 'border': '2px solid red'
+    // });
+    // $('li:first').nextAll().css({
+    //     'color': 'red', 'border': '2px solid red'
+    // });
+    // $('li:nth-child(2)').nextAll().css({
+    //     'color': 'red', 'border': '2px solid red'
+    // });
+    // $('li:first').nextAll('p').css({
+    //     'color': 'red', 'border': '2px solid red'
+    // });
+
+    // $('li:first').nextUntil('p').css({
+    //     'color': 'red', 'border': '2px solid red'
+    // });
+
+    // $('li').first().css({
+    //     'color': 'red', 'border': '2px solid red'
+    // });
+    // $('li').last().css({
+    //     'color': 'red', 'border': '2px solid red'
+    // });
+    // $('li').eq(1).css({
+    //     'color': 'red', 'border': '2px solid red'
+    // });
+    // $('li').filter('.intro').css({
+    //     'color': 'red', 'border': '2px solid red'
+    // });
+    $('li').not('.intro').css({
+        'color': 'red', 'border': '2px solid red'
+    });
+});
+
+
+/end of class 6
+
+//class 7:
+$(document).ready(function () {
+    // $('div').load('mytext.txt');
+    // $('div').load('myweb.html');
+
+    //primer za selektiranje konkreten element od vcitaniot file
+    // $('div').load('myweb.html #third');
+
+    //primer za callback funkcija
+    // $('div').load('myweb.html #third', function (responseTxt, statusTxt, xhr) {
+    //     //console.log(responseTxt);
+    //     // console.log(statusTxt);
+    //     // console.log(xhr);
+    //     if (statusTxt == 'success') {
+    //         alert('External file loaded successfully');
+    //     }
+    //     if (statusTxt == 'error') {
+    //         alert('Error: ' + xhr.status);
+    //     }
+    // });
+
+    // $.post('https://jsonplaceholder.typicode.com/posts/1/comments').done(function (response) {
+    //     console.log(response);
+    // });
+
+    // $.ajax('https://jsonplaceholder.typicode.com/posts/1').done(function (response) {
+    //     console.log(response);
+    // });
+
+    // var settings = {
+    //     url: 'https://jsonplaceholder.typicode.com/posts/1',
+    //     data: {}
+    // };
+
+    // $.ajax(settings).done(function (response) {
+    //     console.log(response);
+    // });
+
+    const settings = {
+        async: true,
+        crossDomain: true,
+        url: 'https://weatherapi-com.p.rapidapi.com/current.json?q=53.1%2C-0.13',
+        method: 'GET',
+        headers: {
+            'X-RapidAPI-Key': '50f6f6efa4msh9dc6ce741d14486p141f58jsnfda0090c4618',
+            'X-RapidAPI-Host': 'weatherapi-com.p.rapidapi.com'
+        }
+    };
+
+    $.ajax(settings).done(function (response) {
+        console.log(response);
+    });
+});
+
+
+end of class 7
